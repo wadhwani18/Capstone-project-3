@@ -217,8 +217,9 @@ TOOLS = [
 def get_agent():
     if not os.getenv("OPENAI_API_KEY"):
         raise ValueError(
-            "API key missing. Add OPENAI_API_KEY to your .env file."
-        )
+    "API key missing. Add OPENAI_API_KEY to your "
+    "local .env file or Streamlit Cloud Secrets."
+)
 
     return create_agent(
         model=MODEL_NAME,
