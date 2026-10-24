@@ -9,7 +9,16 @@ from langchain.agents import create_agent
 from langchain.tools import tool
 
 # 1. Load API key from .env
+
+# 1. Load API key locally or from Streamlit Cloud Secrets
 load_dotenv()
+
+if not os.getenv("OPENAI_API_KEY"):
+    try:
+        os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
+    except (KeyError, FileNotFoundError):
+        pass
+
 
 MODEL_NAME = "openai:gpt-4o-mini"
 
